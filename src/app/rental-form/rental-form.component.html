@@ -1,1 +1,15 @@
-<p>rental-form works!</p>
+<div class="rental-form">
+  <h3>Rent a Car</h3>
+  <form>
+    <label for="car">Choose a car:</label>
+    <select id="car" name="car">
+      <option *ngFor="let car of cars" [value]="car.carId">{{ car.brand}}</option>
+    </select>
+
+    <label for="date">Choose a date:</label>
+    <input type="date" id="date" name="rental-date">
+
+    <button type="submit" class="submit-button">Submit</button>
+  </form>
+</div>
+

@@ -1,12 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { CarService } from '../car-service.service';
 
 @Component({
-  selector: 'app-rental-form',
   standalone: true,
-  imports: [],
+  selector: 'app-rental-form',
+  imports: [CommonModule, HttpClientModule],
   templateUrl: './rental-form.component.html',
-  styleUrl: './rental-form.component.css'
+  styleUrls: ['./rental-form.component.css']
 })
-export class RentalFormComponent {
+export class RentalFormComponent implements OnInit {
+  cars: any[] = [];
 
+  constructor(private carService: CarService) { }
+
+  ngOnInit(): void {
+    this.carService.getCars().subscribe({
+      next: (response) => {
+        console.log(response);
+        this.cars = response.data;
+      },
+      error: (error) => {
+        console.error('Error fetching cars:', error);
+      },
+      complete: () => {
+        console.log('Car fetching completed');
+      }
+    });
+  }
 }

@@ -1,1 +1,8 @@
-<p>car-list works!</p>
+<div class="car-list">
+  <div class="car-card" *ngFor="let car of cars">
+    <img [src]="car.image" alt="{{ car.name }}">
+    <h3>{{ car.name }}</h3>
+    <p>{{ car.description }}</p>
+    <button class="rent-button">Rent Now</button>
+  </div>
+</div>
