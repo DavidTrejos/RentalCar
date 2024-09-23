@@ -1,13 +1,13 @@
 <div class="rental-form">
   <h3>Rent a Car</h3>
-  <form>
+  <form [formGroup]="rentalForm" (ngSubmit)="onSubmit()">
     <label for="car">Choose a car:</label>
-    <select id="car" name="car">
+    <select id="car" formControlName="car">
       <option *ngFor="let car of cars" [value]="car.carId">{{ car.brand}}</option>
     </select>
 
     <label for="date">Choose a date:</label>
-    <input type="date" id="date" name="rental-date">
+    <input type="date" id="date" formControlName="rentalDate">
 
     <button type="submit" class="submit-button">Submit</button>
   </form>
